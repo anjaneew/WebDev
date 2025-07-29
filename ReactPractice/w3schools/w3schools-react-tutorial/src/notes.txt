@@ -1,0 +1,26 @@
+React 
+
+React is a front-end JavaScript library.
+React was developed by the Facebook Software Engineer Jordan Walke.
+React is also known as React.js or ReactJS.
+React is a tool for building UI components.
+
+React creates a VIRTUAL DOM in memory.React only changes what needs to be changed!
+
+To use React in production, you need npm (Node Package Manager) which is included with Node.js.
+
+React Directly in HTML
+The quickest way start learning React is to write React directly in your HTML files.
+Start by including three scripts, the first two let us write React code in our JavaScripts, and the third, Babel, allows us to write JSX syntax and ES6 in older browsers.
+
+CDN inhead - OK for testing purposes, but for production need React environment
+
+index.js is the same as main.jsx in vite
+
+
+
+JSX
+JSX stands for JavaScript XML.
+JSX allows us to write HTML in React.
+JSX makes it easier to write and add HTML in React.
+
