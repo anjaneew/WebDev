@@ -1,0 +1,17 @@
+
+.list-category{
+    font-size: 2.5em;
+    font-weight: bold;
+    color: hsl(221, 47%, 27%);
+    text-align: center;
+}
+
+.list-item li{
+    font-size: 2.0em;
+    list-style: circle;
+}
+
+.list-item li:hover{
+    font-size: 2.5em;
+    list-style:inside
+}
