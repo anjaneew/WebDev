@@ -1,3 +1,5 @@
+//ColorPicker using useState - stateful variables
+
 import ColorPicker from './ColorPicker.jsx';
 
 
