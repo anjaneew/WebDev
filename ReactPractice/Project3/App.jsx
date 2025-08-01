@@ -3,7 +3,7 @@
 //  1 External  2 Modules 3 Inline
 
 import Button1 from './Button1.jsx'
-import Button2 from './Button/Button2.jsx'
+import Button2 from './Button2/Button2.jsx'
 import Button3 from './Button3.jsx'
 
 
