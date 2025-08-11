@@ -23,18 +23,20 @@
     * it will generate a JS file. This can run using Node.js
     * ```node filename.js```
 
-5.   Configuration
-    * Create a `src` folder.
-    * Move the `index.ts` file into the newly created `src` folder. 
-    * (you better delete the previously created JS file manually)
-    * (you must be in root folder now)
-    * Generate a tsconfig.json File:  
-             ```tsc --init```
-    * check if these two lines are commented - (I had to uncomment manually)
-        ```// File Layout   ```
-        ```"rootDir": "./src",```
-        ```"outDir": "./dist",```
+5.   Configuration  
 
-    *  compile   ```tsc```
-    *  it will generate a JS file. This can run using Node.js  
+    * Create a `src` folder.  
+    * Move the `index.ts` file into the newly created `src` folder.   
+    * (you better delete the previously created JS file manually)  
+    * (you must be in root folder now)  
+    * Generate a tsconfig.json File:    
+             ```tsc --init```  
+    * check if these two lines are commented - (I had to uncomment manually)  
+        ```// File Layout   ```  
+        ```"rootDir": "./src",```  
+        ```"outDir": "./dist",```  
+
+    *  compile      
+    ```tsc```  
+    *  it will generate a JS file. This can run using Node.js    
         ```node  dist/filename.js```      
