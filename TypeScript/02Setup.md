@@ -23,8 +23,7 @@
     * it will generate a JS file. This can run using Node.js
     * ```node filename.js```
 
-5.   Configuration  
-
+5.   Configuration
     * Create a `src` folder.  
     * Move the `index.ts` file into the newly created `src` folder.   
     * (you better delete the previously created JS file manually)  
