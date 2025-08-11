@@ -4,7 +4,7 @@ TypeScript is JavaScript with syntax for types. It is all about type safety. Som
 
 For example, if you write:
 
-`2 + "2"` 
+```2 + "2"``` 
 
 It will return '22'. However, with TypeScript, all of these problems just disappear.
 
