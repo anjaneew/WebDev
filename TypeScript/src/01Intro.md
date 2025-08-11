@@ -1,4 +1,4 @@
-#Intro
+# Intro
 
 TypeScript is JavaScript with syntax for types. It is all about type safety. Sometimes JavaScript exhibits unexpected behavior. 
 
@@ -12,6 +12,6 @@ It will return '22'. However, with TypeScript, all of these problems just disapp
 
 **TypeScript is JavaScript with type checking.**
 
-##Transpilation
+### Transpilation
 
 TypeScript > *TypeScript Compiler* > JavaScript
