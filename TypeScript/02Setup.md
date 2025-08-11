@@ -34,8 +34,7 @@
         ```// File Layout   ```  
         ```"rootDir": "./src",```  
         ```"outDir": "./dist",```  
-
-    *  compile      
+    *  compile
     ```tsc```  
-    *  it will generate a JS file. This can run using Node.js    
+    *  it will generate a JS file. This can run using Node.js
         ```node  dist/filename.js```      
