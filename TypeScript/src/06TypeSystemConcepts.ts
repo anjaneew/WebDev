@@ -15,7 +15,9 @@ console.log(myVar);
     // myVar = false; // ❌
 
 //-------------------------Literal Types-------------------------
-//Literal types are a type system feature in TypeScript that allow you to specify exactly which values are allowed for a particular variable or function parameter. Instead of using a general type like string or number
+//Literal types are a type system feature in TypeScript that allow you to specify 
+// exactly which values are allowed for a particular variable or function parameter.
+//  Instead of using a general type like string or number
 
 let directions: "left" | "right" | "up" | "down";
 
@@ -70,7 +72,9 @@ console.log(alice);
 console.log(bob);
 
 //-------------------------Intersection Type-------------------------
-//An intersection type in TypeScript allows you to combine multiple types into one, creating a new type that has all the properties and functionalities of the individual types being intersected.
+//An intersection type in TypeScript allows you to combine multiple types into one,
+//  creating a new type that has all the properties and functionalities of the individual 
+// types being intersected.
 
 type FirstType = {
     name: string;
@@ -95,7 +99,8 @@ console.log(person);
 
 //-------------------------Exercises----------------------------------
 
-/**1 Declare a variable myVar that can hold either a string or a number. Assign it the value "office" and log it, then assign the value 42 and log it.*/
+/**1 Declare a variable myVar that can hold either a string or a number. Assign it the 
+ * value "office" and log it, then assign the value 42 and log it.*/
 
 let myVar2: string | number; //myVar is already in the file
 myVar2 = "office";
@@ -103,12 +108,14 @@ console.log(myVar2);
 myVar2 = 42;
 console.log(myVar2);
 
-/**2 Define a variable move that accepts  literal strings "left", "right", "up", or "down" and logs the direction passed. */
+/**2 Define a variable move that accepts  literal strings "left", "right", "up", or 
+ * "down" and logs the direction passed. */
 
 let move: "left" | "right" | "up" | "down";
 
 
-/**3 Write a function paint that accepts only the string literals "yellow", "purple", or "orange" as a parameter. Call it with "purple".*/
+/**3 Write a function paint that accepts only the string literals "yellow", "purple", 
+ * or "orange" as a parameter. Call it with "purple".*/
 
 function paint(color: "yellow" | "purple" | "orange"){
     console.log(color);
@@ -116,7 +123,8 @@ function paint(color: "yellow" | "purple" | "orange"){
 
 paint("purple");
 
-/**4 Declare a variable user that can be either a string or null. Assign it a name string and log a greeting. Then assign null and log a different greeting.*/
+/**4 Declare a variable user that can be either a string or null. Assign it a name string
+ *  and log a greeting. Then assign null and log a different greeting.*/
 
 let user: string | null;
 
@@ -126,13 +134,16 @@ console.log(`Hello ${user}`);
 user = null;
 console.log(`Hi! Enter your username: ${user}`);
 
-/**5 Create a type alias Identifier for string | number. Declare a variable id of type Identifier and assign it a number, then a string.*/
+/**5 Create a type alias Identifier for string | number. Declare a variable id of type
+ *  Identifier and assign it a number, then a string.*/
 
 type Identifier = string | number;
 let id: Identifier = 4001;
 id = "Marion";
 
-/**6 Define a type alias Person for an object with properties firstName (string), lastName (string), and optional age (number). Create an object of type Person without the age property.*/
+/**6 Define a type alias Person for an object with properties firstName (string), 
+ * lastName (string), and optional age (number). Create an object of type Person without
+ *  the age property.*/
 
 type Person = {
     firstName: string;
@@ -145,7 +156,9 @@ let person1: Person = {
     lastName: "Tuck",
 }
 
-/**7 Define two types: Contact with email and phone strings, and Profile with username (string) and bio (string). Create a new type UserProfile combining both using intersection. Declare an object of type UserProfile and assign values to all properties.*/
+/**7 Define two types: Contact with email and phone strings, and Profile with username
+ *  (string) and bio (string). Create a new type UserProfile combining both using 
+ * intersection. Declare an object of type UserProfile and assign values to all properties.*/
 
 type Contact = {
     email: string;
