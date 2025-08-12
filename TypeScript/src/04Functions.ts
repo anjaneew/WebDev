@@ -94,4 +94,88 @@ function infiniteLoop(): never {
 }
 
 
+/**Exercise:
+
+1 Write a function calculateTriangleArea with parameters baseTriangle (number) and heightTriangle (number) that returns the area of the triangle. Log the result when calling it with values 10 and 5. */
+
+function calculateTriangleArea(baseTriangle: number, heightTriangle: number): number{
+    return (heightTriangle * baseTriangle)/ 2;
+}
+
+calculateTriangleArea(10, 5);
+
+/**2 Create a function introduceOptional that takes a required name (string) and an optional country (string). If the country is provided, log “Hello \[name] from \[country]!”, otherwise log “Hello \[name]!”. Call it twice: once with both arguments, once with only the name. */
+
+function introduceOptional(name: string, country?: string): void {
+    if(country !== undefined){
+        console.log(`Hello ${name} from ${country}!`);
+    }
+    else{
+        console.log(`Hello ${name}!`);
+    }
+}
+
+introduceOptional("bob", "india");
+introduceOptional("sanga");
+
+/**3 Write a function greetWithDefault that takes a name (string) and an age (number) defaulting to 30. Log a greeting message including the name and age. Call it once without providing the age and once with a custom age. */
+
+function greetWithDefault(name: string, age: number = 30 ): void {
+    console.log(`Happy Birthday ${name}! Today you are ${age}`);
+};
+
+greetWithDefault("Merwin");
+
+/**4 Create a function multiplyAll using a rest parameter nums (number\[]) that multiplies all numbers together and returns the result. Call it with the numbers 2, 3, 4 and log the output. */
+
+function multiplyAll(...nums: number[]): number{
+    let result = 1;
+    for(let i = 0; i < nums.length; i++){
+        result *= nums[i];
+    }
+    return result;
+}
+
+multiplyAll(2, 3, 4);
+
+/**5 Define an arrow function subtractWithArrow that takes two numbers and returns their difference. Call it with values 50 and 15 and log the result. */
+
+const subtractWithArrow = (num1: number, num2: number): number => num1 - num2;
+
+subtractWithArrow(50, 15);
+
+/**6 Create an anonymous function assigned to a constant divide that takes two numbers and returns the result of dividing the first by the second. Call it with values 100 and 4 and log the result. */
+
+const divide = function (num1: number, num2: number): number {
+    return num1 / num2;
+}
+
+divide(100, 4);
+
+/**7 Write a function sayHello that takes a name (string) and explicitly returns void. It should log “Hi \[name]”. Call it with your own name. */
+
+function sayHello(name: string): void{
+    console.log(`Hi ${name}`);
+}
+
+sayHello("Anjanee");
+
+/**8 Create a function triggerError that takes a message (string) and always throws a new Error with that message (never return). Call it once to see the error in the console. */
+
+function triggerError(message: string): never{
+    throw new Error(message);
+}
+
+triggerError("File not found");
+
+/**9 Write a function endlessCounter that never ends (never return) and logs numbers starting from 1 and increasing forever in a loop. */
+
+function endlessCounter(): never{
+    let i = 1;
+    while(true){
+        console.log(i);
+        i++;
+    }
+}
+
 
