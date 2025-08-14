@@ -1,6 +1,7 @@
 //--------------------------------------Class------------------------------------------
 
 //---------------------------Class Type Annotations-------------------------------------
+/** types of properties, methods, and constructor parameters within a class. */
 
 class Product {
     //Property type annotations
@@ -28,7 +29,10 @@ const product1 = new Product(1, "brush", 2.99);
 console.log(product1.getProductInfo());
 
 //------------------------------class access modifiers---------------------------------
-//Public
+/**keywords used to control the visibility and accessibility of class members 
+ * (properties and methods) from outside the class.  */
+
+//Public -accessible from anywhere,
 
 class Restaurant {
     public menu: string[];
@@ -47,7 +51,7 @@ const diner = new Restaurant(['Koththu', 'Kadala', 'Rice and curry']);
 console.log(diner.menu);//✔️
 diner.displayMenu();//✔️
 
-//Private
+//Private - only accessible from within the class
 class Kitchen {
     private secretRecipe: string;
 
@@ -65,7 +69,8 @@ const myKitchen = new Kitchen("Pol sambola");
 myKitchen.cookDish() //public method ✔️
 // console.log(myKitchen.secretRecipe); // ❌ private - limited to class
 
-//Protected
+//Protected - accessible from within the class they are defined in and from subclasses 
+// (derived classes)
 class HomeKitchen{
     protected familyRecipe: string;
 
@@ -160,6 +165,10 @@ myMom.checkFamilyAccount();// ✔️ - my mom can check family version of accoun
 
 
 //----------------Class accessors - getters and setters--------------------------------
+/**Class accessors, also known as getters and setters, are a way to control access to the 
+ * properties of a class.  */
+
+
 class Shop{
     private _price: number;
 
@@ -206,6 +215,8 @@ console.log(Product2.getProductInfo());
  * ID: $1 Name: $cup cake Price: $21.58 */
 
 //------------------------------Class Static Members-----------------------------------
+/**Static members in a class are properties or methods that belong to the class itself, 
+ * rather than to instances of the class.  */
 class ChatRoom{
     private static userCount: number = 0; //Tracks total users (class-level)
 
@@ -247,8 +258,149 @@ console.log(piyal.userName);//✔️ public variable
  * 1 users are online.
  */
 
-//--------------------------------------Class------------------------------------------
+//-----------------------------Class Implement Interface-------------------------------
+/**the class ensures that it provides the properties and methods required by that interface.
+ *  It helps enforce a consistent structure for objects created from that class. */
 
-//--------------------------------------Class------------------------------------------
+interface ProductInfo{
+    serialNum: number;
+    name: string;
+    price: number;
+    giveInfo(): string;
+}
 
-//--------------------------------------Class------------------------------------------
+class Products implements ProductInfo{ //name 'Product' is already elsewhere in my lesson
+    serialNum: number; // Explicitly declare properties 
+    name: string;
+    price: number;
+
+    constructor(serial: number, name: string, price: number){
+        this.serialNum = serial;
+        this.name = name;
+        this.price = price;
+    }
+
+    giveInfo(): string {
+        return `Product info: serial: ${this.serialNum} name: ${this.name} price: $${this.price}`;
+    }
+}
+
+const broom = new Products(101, "Broom", 5.47);
+
+console.log(broom.giveInfo()); //  "Product info: serial:101   name:Broom price: $5.47"
+
+//--------------------------abstract classes and members-------------------------------
+/**Abstract classes are used as blueprints for other classes. They cannot be instantiated on
+ *  their own but can be subclassed by other classes. Abstract classes can also contain 
+ * abstract methods, which are declared but not implemented in the abstract class itself.
+ *  Subclasses are required to provide implementations for these abstract methods. */
+abstract class HousePlan{
+    private static roomCount: number = 0;
+    
+    constructor(public length: number, public width: number){
+        HousePlan.roomCount++;
+    }
+
+    abstract installAppliances():void; // Proper abstract method syntax
+
+    displayArea():void{
+        console.log(`The area of the room is ${this.length * this.width} sqft`);
+        console.log(`Total rooms built: ${HousePlan.roomCount}`);
+    }
+}
+
+class Bedroom extends HousePlan{
+
+    installAppliances(){
+        console.log("A bed is added.");
+    }
+
+    constructor(){
+        super(8,12);
+    }
+
+}
+
+class KKitchen extends HousePlan{ //Kitchen is already used in this lesson
+
+    installAppliances(){
+        console.log("A sink is installed");
+    }
+
+    constructor(){
+        super(5,12);
+    }
+
+}
+
+const myroom = new Bedroom();
+const kitchenArea = new KKitchen();
+
+myroom.installAppliances();
+myroom.displayArea();
+kitchenArea.displayArea();
+kitchenArea.installAppliances();
+
+
+//-----------------------------Polymorphism & Method Override-------------------------------
+
+abstract class Cupcakes {
+    private static order: number = 0; 
+
+    protected constructor(public name: string){
+        
+    }
+
+    static getOrder(): number{
+        return Cupcakes.order++;
+    }
+
+    bake(): void{
+        console.log(`Order #${Cupcakes.order} is baked. Your cupcake is ready. 🧁`);
+    }
+
+    abstract decorate(): void;
+}
+
+class StrawberryCupcakes extends Cupcakes{
+    
+    constructor(name: string){
+        super(name);
+    }
+
+    decorate(): void {
+        console.log("Strawberry 🍓 Icing is added.");
+    }
+
+}
+
+class LemonCupcakes extends Cupcakes{
+    
+    constructor(name: string){
+        super(name);
+    }
+
+    decorate(): void {
+        console.log("Lemon flavoured 🍋 Icing is added.");
+    }
+
+}
+
+const orderOne = new StrawberryCupcakes("orderOne");
+orderOne.bake();
+orderOne.decorate();
+
+//Order #1 is baked. Your cupcake is ready. 🧁  
+//Strawberry 🍓 Icing is added.  
+
+const orderTwo = new StrawberryCupcakes("orderTwo");
+orderTwo.bake();
+orderTwo.decorate();
+//Order #2 is baked. Your cupcake is ready. 🧁  
+//Strawberry 🍓 Icing is added.  
+
+const orderThree = new LemonCupcakes("orderThree");
+orderTwo.bake();
+orderTwo.decorate();
+// Order #3 is baked. Your cupcake is ready. 🧁 
+// Lemon flavoured 🍋 Icing is added.  
