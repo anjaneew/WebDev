@@ -296,12 +296,14 @@ console.log(broom.giveInfo()); //  "Product info: serial:101   name:Broom price:
  *  Subclasses are required to provide implementations for these abstract methods. */
 abstract class HousePlan{
     protected roomName: string;
-    private static setupCount: number = 0;
+    private static setupCount: number = 0;//setupCount is static, so it belongs to the class, 
+    // not individual objects; constructors run per object, but static values are shared and
+    //  updated independently of instantiation.
     private static roomCount: number = 0;
     
     constructor(public length: number, public width: number, roomName: string){
         this.roomName = roomName;
-        HousePlan.roomCount++;
+        HousePlan.roomCount++;//static do not need to go through constructor but here it is counting
     }
 
     abstract installAppliances():void; // Proper abstract method syntax
@@ -319,7 +321,7 @@ class Bedroom extends HousePlan{
         console.log("A bed is added.");
     }
 
-    constructor(roomName: string){
+    constructor(roomName: string){ //only new parameters
         super(8, 12, roomName);
     }
 
@@ -331,7 +333,7 @@ class KKitchen extends HousePlan{ //Kitchen is already used in this lesson
         console.log("A sink is installed");
     }
 
-    constructor(roomName: string){
+    constructor(roomName: string){//only new parameters
         super(5, 12, roomName);
     }
 
@@ -525,8 +527,8 @@ console.log(mySavingsAccount.accountNumber);//✔️
 class Temperature{
     private _celsius: number;
 
-    constructor(){
-        this._celsius = 0;
+    constructor(initialTemp: number){// Add parameter
+        this._celsius = initialTemp;// Use the parameter
     }
 
     get celsius(){
@@ -547,11 +549,14 @@ class Temperature{
     }
 }
 
-const weather = new Temperature();
-console.log(weather.celsius); 
-console.log(weather.fahrenheit);
+const weather1 = new Temperature(185);
+weather1.celsius = 25// Uses the setter
+console.log(weather1.celsius); // 25
+console.log(weather1.fahrenheit);// 77
+console.log(weather1.celsius = -300);  //This will trigger the validation message
 
 //Please help. i donno how to set the values of new Temp. may be i am mistaken here. 
+// FEEDBACK : Your getter/setter implementation is correct, but you need to set the initial temperature in the constructor:
 
 // ----------------- Class Static Members-----------------------------------------
 
@@ -703,11 +708,13 @@ console.log(parttimeGuy.calculateSalary());
 
 abstract class MediaPlayer{
     protected title: string;
+    //protected property = parent class > parent const-param > parent-constructor 
+    // > child const-param > child constructor
     private static playCount: number = 0;
 
     constructor(title: string){
-        // MediaPlayer.playCount++; - I am not sure about this part - answer
         this.title = title;
+        MediaPlayer.playCount++; //counts how many objects are created
     }
 
     abstract play(): void;
@@ -719,24 +726,39 @@ abstract class MediaPlayer{
     }
 }
 
-/**30 Create a class called AudioPlayer that extends MediaPlayer with:
-* constructor that accepts title and passes it to super
-* implementation of play() method that logs "🎵 Audio playing..."*/
-
-/**31 Create a class called VideoPlayer that extends MediaPlayer with:
-* constructor that accepts title and passes it to super  
-* implementation of play() method that logs "📺 Video playing..."*/
-
 class AudioPlayer extends MediaPlayer{
     
-    constructor(){
-        super(this.title);
+    constructor(title: string){ 
+        //protected property = parent class > parent const-param > parent-constructor 
+        // > child const-param > child constructor
+        super(title);
+    }
+
+    play(){
+        console.log(`🎵 Audio playing...`);
     }
 }
 
 class VideoPlayer extends MediaPlayer{
 
+    constructor(title: string){ 
+        //protected property = parent class > parent const-param > parent-constructor 
+        // > child const-param > child constructor
+        super(title);
+    }
+
+    play(){
+        console.log(`📺 Video playing...`);
+    }
+
 }
+
+const violine = new AudioPlayer("my music playlist");
+const movieMarathon = new VideoPlayer("my Movie marathon");
+violine.play();
+violine.showStats();
+movieMarathon.play();
+movieMarathon.showStats();
 
 // ----------------- Polymorphism & Method Override ----------------- 
 
@@ -764,3 +786,56 @@ class VideoPlayer extends MediaPlayer{
 * implementation of deliver() that logs "📱 SMS sent to: [phoneNumber] - [message]"*/
 
 /**39 Create instances of both notification types, call send() and deliver() on each, then use getTotalNotifications() to display the total count.*/
+
+abstract class Notification{
+    protected message: string;
+    private static notificationCount: number = 0;
+
+    constructor(message: string){
+        this.message = message;
+    }
+
+    //Static Method - shouldn't take a parameter. 
+    // Static methods access static properties directly:
+    static getTotalNotifications(): number{
+        return Notification.notificationCount;
+    }
+
+    send(){
+        Notification.notificationCount++;
+        console.log(`Notification #${Notification.notificationCount} sent`);
+    }
+
+    abstract deliver(): void
+}
+
+class EmailNotification extends Notification{
+    private emailAddress: string;
+
+    constructor(message: string, emailAddress: string){
+        super(message);//super constructor first
+        this.emailAddress = emailAddress;
+    }
+
+    deliver(): void{
+        console.log(`📧 Email sent to: ${this.emailAddress} - ${this.message}`);
+    }
+
+}
+
+class SMSNotification extends Notification{
+    private phoneNumber: string;
+
+    constructor(message: string, phoneNumber: string){
+        super(message);
+        this.phoneNumber = phoneNumber;
+    }
+
+    deliver():void{
+        console.log(`📱 SMS sent to: ${this.phoneNumber} - ${this.message}`);
+    }
+}
+
+const myMail = new EmailNotification("Hello!" , "fake@gmail.com");
+const myPhone = new SMSNotification("Hello!" , "+123-456-789");
+
