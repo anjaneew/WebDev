@@ -143,7 +143,9 @@ interface Dog extends Animal {
 }
 
 class Labrador implements Dog {
-    type: "dog"; //error cz it expects type: string = "dog"; insted
+    // type: "dog"; //Manually corrected to run ts - 
+                    // error cz it expects type
+    type: string = "dog";
     bark(){
         console.log("Baw Baw Baw!!!");
     }
