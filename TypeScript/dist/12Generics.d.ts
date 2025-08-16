@@ -9,5 +9,4 @@
  *
  * **/
 export {};
-/**Generics in TypeScript can handle multiple types using union types or intersection types */
 //# sourceMappingURL=12Generics.d.ts.map

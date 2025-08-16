@@ -31,7 +31,10 @@ greetingDefault("Mary", 11); // Output: "Happy Birthday Mary! You are 11."
 function addAll(...nums) {
     let result = 0;
     for (let i = 0; i < nums.length; i++) { //since it sis i < nums.length the loop stops before the last one
-        result += nums[i];
+        // result += nums[i];
+        result += nums[i]; //NOTE: non-null assertion
+        // Manually corrrected to 
+        // run the program 
     }
     return result;
 }
@@ -98,7 +101,9 @@ greetWithDefault("Merwin");
 function multiplyAll(...nums) {
     let result = 1;
     for (let i = 0; i < nums.length; i++) {
-        result *= nums[i];
+        result *= nums[i]; //NOTE: non-null assertion
+        // Manually corrrected to 
+        // run the program
     }
     return result;
 }

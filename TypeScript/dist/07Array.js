@@ -42,5 +42,7 @@ Use the following data for three products:
 2003, "Eraser", 0.25*/
 let productCatalog = [[2001, "Notebook", 2.5], [2002, "Pencil", 0.5], [2003, "Eraser", 0.25]];
 /**6 Log the product title of the third product in productCatalog to the console.*/
-console.log(productCatalog[2][1]);
+// console.log(productCatalog[2][1]);
+console.log(productCatalog[2]?.[1]); //optional chaining
+//                            //Manually corrected to run ts
 //# sourceMappingURL=07Array.js.map

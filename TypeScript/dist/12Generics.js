@@ -39,8 +39,14 @@ console.log("\n Arrow Function with Generics \n");
 const makePaper = (val) => val;
 console.log(makePaper(80));
 console.log(makePaper("handmade"));
+console.log("\n Generics Multiple Types \n");
 //---------------------------Generics Multiple Types---------------------------------------
 /**Generics in TypeScript can handle multiple types using union types or intersection types */
+function rainbowDisplay(numColor, color) {
+    return `\nThe number of colors are ${numColor} and colors are ${color}`;
+}
+console.log(rainbowDisplay(2, "purple"));
+console.log("lets see if it works");
 //---------------------------------Generics----------------------------------------------
 //----------------------------------Generics------------------------------------------------
 //----------------------------------Generics------------------------------------------------

@@ -47,10 +47,15 @@ console.log(makePaper<number>(80));
 console.log(makePaper<string>("handmade"));
 
 
-
+console.log("\n Generics Multiple Types \n"); 
 //---------------------------Generics Multiple Types---------------------------------------
 /**Generics in TypeScript can handle multiple types using union types or intersection types */
 
+function rainbowDisplay<T, S>(numColor: T, color: S): string {
+    return `\nThe number of colors are ${numColor} and colors are ${color}`;
+}
+
+console.log(rainbowDisplay(2, "purple"));
 
 
 //---------------------------------Generics----------------------------------------------

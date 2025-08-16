@@ -59,7 +59,9 @@ else {
     });
 }
 class Labrador {
-    type; //error cz it expects type: string = "dog"; insted
+    // type: "dog"; //Manually corrected to run ts - 
+    // error cz it expects type
+    type = "dog";
     bark() {
         console.log("Baw Baw Baw!!!");
     }
