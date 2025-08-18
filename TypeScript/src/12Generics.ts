@@ -38,16 +38,18 @@ console.log(`Same Function but with typesafe data that can change:
     4. Number Array: 1,2,3,4 
 */
 
-console.log("\n Arrow Function with Generics \n"); 
+
 
 function displayDataInfo<T>(data: T): string{
-    return `The value is ${data} and it is a data of ${typeof data} type`;
+    return `The value is ${data} and it is a data of ${typeof data} type \n`;
 }
 
-console.log(displayDataInfo(100));
-console.log(displayDataInfo("Claude is great"));
-console.log(displayDataInfo(true));
-console.log(displayDataInfo([1,2,3,5,7]));
+console.log(displayDataInfo(100)+"\n");
+console.log(displayDataInfo("Claude is great")+"\n");
+console.log(displayDataInfo(true)+"\n");
+console.log(displayDataInfo([1,2,3,5,7])+"\n");
+
+console.log("\n Arrow Function with Generics \n"); 
 
 //---------------------Arrow Function with Generics---------------------------------------
 
@@ -108,7 +110,10 @@ interface Game{
 }
 
 class Collection<T>{
-    public data: T[] = [];
+    public data: T[] = []; //initialized as empty array of type T
+    //no additional setup needed. 
+
+    //NO CONSTRUCTOR - //TypeScript's default constructor handles the generic type parameter automatically
 
     addItem(item: T): void {
         this.data.push(item);
@@ -127,35 +132,68 @@ console.log(itemTwo);
 //------------------------Exercises--------------------------------------
 //-----------------------Generics Intro Exercises-------------------------
 
-/**1 Create a generic function called `processItem` that:
+/**1 ✔️ Create a generic function called `processItem` that:
 * Takes a parameter `item` of type T
 * Returns the same item unchanged
 * Test it with: number 42, string "TypeScript", boolean false, and array [10, 20, 30]*/
 
-/**2 Create a generic function called `describeValue` that:
+function processItem<T>(item: T): T{
+    return item;
+}
+
+console.log(processItem(42));
+console.log(processItem("TypeScript"));
+console.log(processItem(false));
+console.log(processItem([10, 20, 30]));
+
+/**2 ✔️ Create a generic function called `describeValue` that:
 * Takes a parameter `value` of type T  
 * Returns a string in format: "Value: [value] has type: [typeof value]"
 * Test with: number 250, string "Learning", boolean true, array [5, 10, 15]*/
 
-/**3 Create an arrow function called `wrapItem` using generic syntax that:
+function describeValue<T>(value: T): string{
+    return `Value: ${value} has type: ${typeof value}`;
+}
+
+console.log(describeValue(250));
+console.log(describeValue("Learning"));
+console.log(describeValue(true));
+console.log(describeValue([5, 10, 15]));
+
+/**3 ✔️ Create an arrow function called `wrapItem` using generic syntax that:
 * Takes a parameter `content` of type T
 * Returns the same content
 * Test with: number 77, string "Arrow Function"*/
 
-
+const wrapItem = <T>(content: T): T => content;
+console.log(wrapItem(77));
+console.log(wrapItem("Arrow Function"));
 
 //---------------------------Generics Multiple Types Exercises---------------------
 
-/**4 Create a generic function called `combineItems` that:
+/**4 ✔️ Create a generic function called `combineItems` that:
 * Takes two parameters: `first` of type T and `second` of type U
 * Returns a string: "First item: [first], Second item: [second]" 
 * Test with: string "Apple" and number 5, boolean true and string "Complete"*/
+
+function combineItems<T, U>(first: T, second: U): string{
+    return `First item: ${first}, Second item: ${second}`;
+}
+
+console.log(combineItems("Apple", 5));
+console.log(combineItems(true, "Complete"));
 
 /**5 Create a generic function called `compareValues` that:
 * Takes two parameters: `valueA` of type T and `valueB` of type U
 * Returns a string: "Comparing [valueA] (type: [typeof valueA]) with [valueB] (type: [typeof valueB])"
 * Test with: number 100 and string "hundred", string "active" and boolean true*/
 
+function compareValues<T,U>(valueA: T, valueB: U): string{
+    return `Comparing ${valueA} (type: ${typeof valueA}) with ${valueB} (type: ${typeof valueB})`;
+}
+
+console.log(compareValues(100, "hundred"));
+console.log(compareValues("active", true));
 //---------------------------Generics Classes Exercises---------------
 
 /**6 Create a generic class called `Storage` with default type string that:
@@ -164,24 +202,71 @@ console.log(itemTwo);
 * Create instance with string "Database Records" and call display with "Current Data"
 * Create instance with number|string type, value 2024, and call display with "Year"*/
 
+class Storage<T = string>{
+
+    constructor(public content: T){
+         //NOTE THAT I AM NOT SURE ABOUT THIS ANSWER- CORRECT ME IF I AM WRONG 
+    }
+
+    display(label: T): void{
+        console.log(`${label} : ${this.content}`);
+    }
+}
+
+
+const record1 = new Storage<string>("Database Records");
+record1.display("Current Data");
+
+const record2 = new Storage<number |string>(2024);
+record2.display("Year");
+
 /**7 Create a generic class called `Container` with default type number that:
 * Has a constructor taking parameter `item` of type T and assigns it to public property `item` 
 * Has a method `showInfo` that takes parameter `description` of type T and logs: "[description] -> [item]"
 * Create instance with string "Configuration File" and call showInfo with "System Config"
 * Create instance with boolean|number type, value false, and call showInfo with "Status Check"*/
 
+class Container<T= number>{
+    constructor(public item: T){
+        //NOTE THAT I AM NOT SURE ABOUT THIS ANSWER- CORRECT ME IF I AM WRONG
+    }
+
+    showInfo(description: T): void{
+        console.log(`${description} -> ${this.item} `);
+    }
+}
+
+const container1 = new Container<string>("Configuration File");
+container1.showInfo("System Config"); 
+
+const container2 = new Container<boolean | string>(false);
+container2.showInfo("Status Check"); //since parameter number would give an error I changed 
+
 //---------------------------Generics And Interfaces Exercises-------------
 
-/**8 Define an interface `Vehicle` with properties:
+/**8 ✔️ Define an interface `Vehicle` with properties:
 * itemType: string
 * brand: string  
 * model: string
 * year: number*/
 
-/**9 Define an interface `Electronics` with properties:
+interface Vehicle{
+    itemType: string;
+    brand: string;
+    model: string;
+    year: number;
+}
+
+/**9 ✔️ Define an interface `Electronics` with properties:
 * itemType: string
 * name: string
 * warranty: number*/
+
+interface Electronics{
+    itemType: string;
+    name: string;
+    warranty: number;  
+}
 
 /**10 Create a generic class called `Inventory` that:
 * Has a public property `items` initialized as empty array of type T
@@ -189,3 +274,24 @@ console.log(itemTwo);
 * Create instance for Vehicle type and add: {itemType: "Vehicle", brand: "Toyota", model: "Camry", year: 2023}
 * Create instance for Electronics type and add: {itemType: "Electronics", name: "Smartphone", warranty: 24}
 * Log both instances to see the results*/
+
+class Inventory<T>{
+    public items: T[] = []; //The items property is initialized directly: 
+    //No additional setup is required
+
+    //NO CONSTRUCTOR HERE ^ 
+
+    addProduct(product: T){
+        this.items.push(product);
+    }
+}
+
+const vehicle1 = new Inventory<Vehicle>();
+vehicle1.addProduct({itemType: "Vehicle", brand: "Toyota", model: "Camry", year: 2023});
+console.log(vehicle1);
+
+const electronic1 = new Inventory<Electronics>();
+electronic1.addProduct({itemType: "Electronics", name: "Smartphone", warranty: 24});
+console.log(electronic1);
+
+
