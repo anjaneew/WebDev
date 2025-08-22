@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipboard API</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+<body>
+    <h1>Clipboard API</h1>
+    <section>
+        <h2>--------Part 1 -------------</h2>
+        <h3>Copy & Paste</h3><br>
+        <input type="text" id="copy-textbox">
+        <button onClick="copyText()">Copy<i class="fa-regular fa-copy"></i></button>
+        <input type="text" id="paste-textbox">
+        <button onClick="copyText()">Paste<i class="fa-regular fa-clipboard"></i></button>
+    </section>
+
+    <section>
+        <h2>--------Part 2 -------------</h2>
+        <h3>using Event Listeners</h3><br>
+        <input type="text" id="copy-paste-textbox">
+        <p id="event-text"></p>
+    </section>
+
+    <section>
+        <h2>--------Part 3 -------------</h2>
+        <h3>Pasting Images</h3><br>
+        <img src="" id="Clipboard-image">
+        <p id="filename"></p>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
