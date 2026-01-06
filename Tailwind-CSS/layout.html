@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>TailwindCSS</title>
+  </head>
+  <body class="p-20">
+    <!-- https://tailwindcss.com/docs/position -->
+    <h1 class="mb-3">Position</h1>
+    <div class="relative w-1/2 h-40 bg-green-200">
+      <p>Relative</p>
+      <div class="absolute bottom-0 right-0 bg-teal-500 p-4">
+        <p>Absolute - bottom-0 right-0</p>
+      </div>
+    </div>
+
+    <div class="relative w-1/2 h-40 bg-green-200 mt-5 mb-5">
+      <p>Relative</p>
+      <div class="absolute left-0 top-0 bg-teal-500 p-4">
+        <p>Absolute - left-0 top-0 </p>
+      </div>
+    </div>
+
+    <div class="relative w-1/2 h-40 bg-green-200 mt-5 mb-5">
+      <p>Relative</p>
+      <div class="absolute right-0 top-0 bg-teal-500 p-4">
+        <p>Absolute - right-0 top-0 </p>
+      </div>
+    </div>
+
+    <div class="relative w-1/2 h-40 bg-green-200 mt-5 mb-5">
+      <p>Relative</p>
+      <div class="absolute bottom-0 left-0 bg-teal-500 p-4">
+        <p>Absolute - bottom-0 left-0</p>
+      </div>
+    </div>
+
+    <!-- https://tailwindcss.com/docs/display -->
+    <h1 class="mb-3">Display</h1>
+    <div class="bg-indigo-100 p-10 mb-10 w-[600px]">
+      <span class="inline bg-red-400 m-5"
+        >1. This is display inline and will wrap normally Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos obcaecati commodi accusamus tenetur debitis maiores nisi dolorem delectus itaque facere hic eveniet veritatis id nesciunt quos pariatur, recusandae, quidem doloribus?</span
+      >
+      (this gebrish will added as an inline text)
+      <span class="inline-block bg-green-400 m-5"
+        >2. This is display inline-block and will not extend beyond it's
+        parent Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur error temporibus unde! Molestiae aut pariatur, totam aliquam et quas doloremque a cumque voluptatibus. Nihil amet voluptas suscipit molestias. Iure, totam.</span
+      >
+      <span class="block bg-purple-400 m-5"
+        >3. This is display block and will move to it's own line Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias nihil ad dolorem consequuntur animi a aliquid facilis ut ab fugit ex blanditiis, doloribus accusantium provident sunt exercitationem commodi, aut delectus.</span
+      >
+      <span class="hidden bg-red-400 m-5"
+        >This is display none and will not display at all</span
+      >
+    </div>
+  </body>
+</html>
